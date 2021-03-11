@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph's Digital Clock</title>
+    <link rel="stylesheet" href="https://use.typekit.net/bjp6ecs.css">
+    <link rel="stylesheet" href="digitalClockStyles.css">
+</head>
+<body>
+    <div class = "outer-section">
+        <section class= "section-1">
+
+            <div class = "title">
+                <h1 class = "Stay">Stay in touch with time.</h1>
+            </div>
+
+            <div class = "clock">
+
+                <!--Mancunian time-->
+                <h1 class = "title2"> [ the time of time ]</h1>
+
+                <!--The clock-->
+                <div id= "clock"></div>
+            </div>
+        </section>
+    </div>
+    <script>
+    function currentTime() 
+    {
+        var date = new Date(); /* creating object of Date class */
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        var mil = date.getMilliseconds();
+        var midday = "AM";
+        midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
+        hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour); /* assigning hour in 12-hour format */
+        hour = updateTime(hour);
+        min = updateTime(min);
+        sec = updateTime(sec);
+        document.getElementById("clock").innerText = hour + ":" + min + ":" + sec +":"+ mil + " " + midday; /* adding time to the div */
+        var t = setTimeout(currentTime, 1000); /* setting timer */
+    }
+
+    function updateTime(k) 
+    { /* appending 0 before time elements if less than 10 */
+        if (k < 10) 
+        {
+            return "0" + k;
+        }
+        else 
+        {
+            return k;
+        }
+
+    }
+
+
+currentTime();
+
+
+
+Resources
+    </script>
+</body>
+</html> 
